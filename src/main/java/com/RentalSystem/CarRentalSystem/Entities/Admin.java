@@ -50,15 +50,14 @@ public class Admin {
         this.sex = sex;
     }
 
-    public Date getBdate() {
+    public String  getBdate() {
 
         return bdate;
     }
 
-    public void setBdate(Date bdate) throws ParseException {
-        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-        String dateStr = date.format(bdate);
-        this.bdate = date.parse(dateStr);
+    public void setBdate(String bdate) throws ParseException {
+
+        this.bdate = bdate;
     }
 
     public String getPhone() {
