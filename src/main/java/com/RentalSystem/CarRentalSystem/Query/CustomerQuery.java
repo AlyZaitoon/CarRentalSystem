@@ -3,8 +3,16 @@ import com.RentalSystem.CarRentalSystem.Entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-public class CustomerQuery {
+import java.util.List;
 
+public class CustomerQuery {
+    public List<Customer> getCustomers(JdbcTemplate jdbc)
+    {
+
+        String sql="select * from customer";
+        List customers= jdbc.queryForList(sql);
+        return customers;
+    }
     public  String addCustomer(Customer customer, JdbcTemplate jdbc)
     {
         String sqlCust="insert into customer VALUES ('"+customer.getCustomer_id() +"','" + customer.getFname() +"','" +customer.getSex() + "','" + customer.getBdate() +"','" + customer.getPhone() +"')";
@@ -31,7 +39,7 @@ public class CustomerQuery {
         else return "BOTH FIELDS ARE BLANK  !!!!!";
     }
 
-    public String deleterCustomer(int customer,JdbcTemplate jdbc)
+    public String deleteCustomer(int customer,JdbcTemplate jdbc)
     {
         if(customer!=0) {
             String sql = "delete from Customer where customer_id=" + customer;

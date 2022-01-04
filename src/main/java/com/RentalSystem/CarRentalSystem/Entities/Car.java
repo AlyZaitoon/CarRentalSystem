@@ -32,6 +32,11 @@ public class Car {
     @Column
     private String color;
 
+    public Car() {
+    }
+
+
+
     public String getPlate_id() {
         return plate_id;
     }

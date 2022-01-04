@@ -25,12 +25,13 @@ public class Admin {
     @Column
     private String phone;
 
+
+
     public int getAdmin_id() {
         return admin_id;
     }
 
     public void setAdmin_id(int admin_id) {
-//        super.setUser_id(admin_id);
         this.admin_id = admin_id;
     }
 
@@ -50,7 +51,10 @@ public class Admin {
         this.sex = sex;
     }
 
-    public String  getBdate() {
+
+    public String getBdate() {
+
+
 
         return bdate;
     }

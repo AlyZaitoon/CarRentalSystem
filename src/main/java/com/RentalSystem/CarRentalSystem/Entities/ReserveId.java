@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ReserveId implements  Serializable{
-    private  int user_id;
+
 
     private  String plate_id;
 

@@ -11,7 +11,9 @@ import java.util.Date;
 @IdClass(ReserveId.class)
 public class Reservation {
 
-    @Id
+    @Column
+    private int reservation_number;
+    @Column
     private  int user_id;
 
     @Id
@@ -28,6 +30,19 @@ public class Reservation {
 
     @Column
     private float payment;
+
+
+
+    public int getReservationNumber() {
+        return reservation_number;
+    }
+
+    public void setReservationNumber(int reservationNumber) {
+        this.reservation_number = reservationNumber;
+    }
+
+
+
 
 
     public int getUser_id() {

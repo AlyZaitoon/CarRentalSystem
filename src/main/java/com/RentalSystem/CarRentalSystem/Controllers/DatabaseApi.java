@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -33,14 +34,29 @@ public class DatabaseApi {
 
 //*************************************************************************************************************************************
 
-    @GetMapping(value="/getUser")
-    public List<User> getUser()
+    @GetMapping(value="/getUsers")
+    public List<User> getUsers()
     {
 
-       String sql="select * from user";
-       List users= jdbc.queryForList(sql);
+       return userQuery.getUsers(jdbc);
+    }
+    @GetMapping(value="/getCars")
+    public List<Car> getCars()
+    {
 
-        return users;
+        return carQuery.getCars(jdbc);
+    }
+    @GetMapping(value="/getCustomers")
+    public List<Customer> getCustomers()
+    {
+
+        return customerQuery.getCustomers(jdbc);
+    }
+    @GetMapping(value="/getReservations")
+    public List<Reservation> getReservations()
+    {
+
+        return reservationQuery.getReservations(jdbc);
     }
 
     @PostMapping(value = "/addUser")
@@ -89,6 +105,62 @@ public class DatabaseApi {
 
 
 //*******************************************************************************************************************************************
+@PostMapping(value = "/addAdmin")
+public String addAdmin (@RequestBody Admin admin)
+{
+    String ret;
+    ret=this.adminQuery.addAdmin(admin,jdbc);
+    return ret;
+}
+
+    @PostMapping(value = "/deleteAdmin")
+    public String deleteAdmin (@RequestBody Admin admin)
+    {
+        String ret;
+        ret=this.adminQuery.deleteAdmin(admin.getAdmin_id(),jdbc);
+        return ret;
+    }
+//*******************************************************************************************************************************************
+@PostMapping(value = "/addCar")
+public String addCar (@RequestBody Car car)
+{
+    String ret;
+    ret=this.carQuery.addCar(car,jdbc);
+    return ret;
+}
+
+    @PostMapping(value = "/updateCar")
+    public String updateCar (@RequestBody Car car)
+    {
+        String ret;
+        ret=this.carQuery.updateCar(car,jdbc);
+        return ret;
+    }
+
+    @PostMapping(value = "/deleteCar")
+    public String deleteCar (@RequestBody Car car)
+    {
+        return this.carQuery.deleterCar(car.getPlate_id(),jdbc);
+    }
+//*******************************************************************************************************************************************
+    @PostMapping(value = "/reserveCar")
+    public String reserveCar(@RequestBody Reservation reservation) throws ParseException {
+        return this.reservationQuery.reserve(reservation,jdbc);
+    }
+    @PostMapping(value = "/pickupCar")
+    public String pickUpCar(@RequestParam(value = "resNo") int reservation)  {
+
+        return this.reservationQuery.pickupCar(reservation,jdbc);
+    }
+    @PostMapping(value = "/returnCar")
+    public String returnCar(@RequestParam(value = "resNo") int reservation)  {
+        System.out.println(reservation);
+        return this.reservationQuery.returnCar(reservation,jdbc);
+    }
+    @PostMapping(value = "/payForCar")
+    public String payForCar(@RequestParam(value = "resNo") int reservation)  {
+        return this.reservationQuery.payForCar(reservation,jdbc);
+    }
 
 
 //    @GetMapping(value = "/cars")
