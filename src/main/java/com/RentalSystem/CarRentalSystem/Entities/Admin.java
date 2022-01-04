@@ -20,7 +20,7 @@ public class Admin {
     private String sex;
 
     @Column
-    private Date bdate;
+    private String bdate;
 
     @Column
     private String phone;
