@@ -20,7 +20,7 @@ public class Car {
 
     @Column
 
-    private Date year;
+    private String year;
 
     @Column
 
@@ -56,11 +56,11 @@ public class Car {
         this.model = model;
     }
 
-    public Date getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(Date year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
