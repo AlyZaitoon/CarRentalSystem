@@ -4,9 +4,17 @@ import com.RentalSystem.CarRentalSystem.Entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.List;
+
 public class UserQuery {
 
+    public List<User> getUsers(JdbcTemplate jdbc)
+    {
 
+        String sql="select * from user";
+        List users= jdbc.queryForList(sql);
+        return users;
+    }
 
     public  String addUser(User user, JdbcTemplate jdbc)
     {

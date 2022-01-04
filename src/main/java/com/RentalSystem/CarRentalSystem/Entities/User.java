@@ -16,6 +16,7 @@ public class User  {
     private String type;
 
 
+
     public int getUser_id() {
         return user_id;
     }

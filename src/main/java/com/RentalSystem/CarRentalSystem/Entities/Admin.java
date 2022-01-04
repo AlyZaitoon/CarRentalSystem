@@ -20,17 +20,18 @@ public class Admin {
     private String sex;
 
     @Column
-    private Date bdate;
+    private String bdate;
 
     @Column
     private String phone;
+
+
 
     public int getAdmin_id() {
         return admin_id;
     }
 
     public void setAdmin_id(int admin_id) {
-//        super.setUser_id(admin_id);
         this.admin_id = admin_id;
     }
 
@@ -50,15 +51,14 @@ public class Admin {
         this.sex = sex;
     }
 
-    public Date getBdate() {
+    public String getBdate() {
 
         return bdate;
     }
 
-    public void setBdate(Date bdate) throws ParseException {
-        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-        String dateStr = date.format(bdate);
-        this.bdate = date.parse(dateStr);
+    public void setBdate(String bdate) throws ParseException {
+
+        this.bdate = bdate;
     }
 
     public String getPhone() {

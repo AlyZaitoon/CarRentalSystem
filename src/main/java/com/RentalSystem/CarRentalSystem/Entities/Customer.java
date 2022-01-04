@@ -24,12 +24,13 @@ public class Customer {
     private String phone;
 
 
+
     public int getCustomer_id() {
         return customer_id;
     }
 
     public void setCustomer_id(int customer_id) {
-//        super.setUser_id(customer_id);
+
         this.customer_id = customer_id;
     }
 
