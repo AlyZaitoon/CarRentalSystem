@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "node-sass": "^7.0.1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
+}

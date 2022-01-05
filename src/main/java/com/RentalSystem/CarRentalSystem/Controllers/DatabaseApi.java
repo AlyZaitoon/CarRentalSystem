@@ -15,6 +15,8 @@ import java.text.ParseException;
 import java.util.List;
 
 @RestController
+
+@CrossOrigin(value = "http://localhost:3000/")
 public class DatabaseApi {
     private  UserQuery userQuery;
     private CarQuery carQuery;
