@@ -12,12 +12,12 @@ class Reserve extends Component{
 render(){
     data.cardData[0].title="HI";
     
-    
+    data.cardData[0].Availability = 'Out of Service';
     const searchText = (event) => {
         this.setState({
             filter:event.target.value          
         });
-        data.cardData[0].Availability = 'Out of Service';
+        
     }
     let dataSearch = data.cardData.filter(item => {
         return Object.keys(item).some(key =>
