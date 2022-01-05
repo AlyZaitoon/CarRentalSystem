@@ -52,7 +52,7 @@ class  Login extends Component
                     <div className = "form">
                         <div className="form-group">
                             <label htmlFor = "username">User iD  </label>
-                            <input id="username" type = "text" name= "username" placeholder="username"/>
+                            <input id="username" type = "numeric" name= "username" placeholder="username"/>
                         </div>
                         <div className="form-group">
                             <label htmlFor = "password">Password  </label>
