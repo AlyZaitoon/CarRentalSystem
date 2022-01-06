@@ -2,9 +2,10 @@ package com.RentalSystem.CarRentalSystem.Query;
 import com.RentalSystem.CarRentalSystem.Entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class CustomerQuery {
     public List<Customer> getCustomers(JdbcTemplate jdbc)
     {

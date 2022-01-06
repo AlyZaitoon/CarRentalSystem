@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import  loginImg  from "../carrent.jpeg";
 import Reserve from "./Reserve";
 import UserService from '../Services/LoginService'; 
-
+import { DataViewDemo } from "./Search";
 class  Login extends Component
 {   
     constructor(props){
@@ -35,7 +35,7 @@ class  Login extends Component
         }
         console.log(this.state.found);
         if(this.state.found==1)
-         window.App.changePage(<Reserve/>);
+         window.App.changePage(<DataViewDemo/>);
          else
          alert("Incorrect UserId or Password");
 

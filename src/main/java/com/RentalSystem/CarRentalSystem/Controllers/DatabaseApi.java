@@ -18,21 +18,20 @@ import java.util.List;
 
 @CrossOrigin(value = "http://localhost:3000/")
 public class DatabaseApi {
+    @Autowired
     private  UserQuery userQuery;
+    @Autowired
     private CarQuery carQuery;
+    @Autowired
     private AdminQuery adminQuery;
+    @Autowired
     private ReservationQuery reservationQuery;
+    @Autowired
     private CustomerQuery customerQuery;
 
     @Autowired
     private  JdbcTemplate jdbc;
-    public DatabaseApi() {
-         this.userQuery=new UserQuery();
-         this.carQuery=new CarQuery();
-         this.adminQuery =new AdminQuery();
-         this.reservationQuery = new ReservationQuery();
-         this.customerQuery = new CustomerQuery();
-    }
+
 
 //*************************************************************************************************************************************
 

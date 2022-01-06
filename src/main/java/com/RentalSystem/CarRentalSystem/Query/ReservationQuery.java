@@ -4,12 +4,13 @@ import com.RentalSystem.CarRentalSystem.Entities.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
+@Service
 public class ReservationQuery {
     public List<Reservation> getReservations(JdbcTemplate jdbc)
     {
