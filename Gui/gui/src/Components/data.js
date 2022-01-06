@@ -7,39 +7,60 @@ import car5 from '../img/car5.jpg'
 var data = {
     cardData:[
         {
-            id:1,
-            img: car1,
-            title: 'Elantra',
-            price: '5.99$',
-            Availability: 'Active'
+            plate_id:"1111",  
+            type:"BMW",
+            model:"x7",
+            color:"red",
+            year:"2022-08-01",
+            status:"active",
+            rate:2000,
+            img:car1,
+            "rating": 4
+        },
+        
+        {
+            plate_id:"123",  
+            type:"hundai",
+            model:"elantra",
+            color:"black",
+            year:"2021-08-01",
+            status:"active",
+            rate:1500,
+            img:car2,
+            "rating": 4
         },
         {
-            id:2,
-            img: car2,
-            title: 'Urus',
-            price: '20.99$',
-            Availability: 'Out of Service'
+            plate_id:"123",  
+            type:"corvette",
+            model:"sport",
+            color:"black",
+            year:"2021-08-01",
+            status:"active",
+            rate:1200,
+            img:car3,
+            "rating": 4
         },
         {
-            id:3,
-            img: car3,
-            title: 'Corvette 2020',
-            price: '15.99$',
-            Availability: 'Active'
+            plate_id:"123",  
+            type:"corvette",
+            model:"sport2",
+            color:"blue",
+            year:"2021-08-01",
+            status:"active",
+            rate:2200,
+            img:car4,
+            "rating": 4
         },
         {
-            id:4,
-            img: car4,
-            title: 'Corvette 2016',
-            price: '12.99$',
-            Availability:'Out of Service'
-        },
-        {
-            id:5,
-            img: car5,
-            title: 'Honda',
-            price: '8.99$',
-            Availability: 'Active'
+            plate_id:"123",  
+            type:"honda",
+            model:"sport50",
+            color:"orange",
+            year:"2021-08-01",
+            status:"OutOfService",
+            rate:1700,
+            img:car5,
+            "rating": 4
         },
     ]
 }
