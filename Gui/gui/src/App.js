@@ -2,8 +2,9 @@ import './App.css';
 import React,{Component} from 'react';
 import Interface from './Components/LoginRegInterface';
 import Login from './Components/Login';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './Components/style.scss';
+import Reservations from './Components/Reservations';
 class  App extends Component{
   constructor(){
     super()

@@ -3,6 +3,9 @@ import  loginImg  from "../carrent.jpeg";
 import Reserve from "./Reserve";
 import UserService from '../Services/LoginService'; 
 import { DataViewDemo } from "./Search";
+import Form from './Form';
+import Header from "./Header";
+
 class  Login extends Component
 {   
     constructor(props){
@@ -29,13 +32,20 @@ class  Login extends Component
             {   
 
                 this.state.found=1;
-                
+                break;
             }
            
         }
         console.log(this.state.found);
         if(this.state.found==1)
-         window.App.changePage(<DataViewDemo/>);
+        {   if(this.state.users[i].type=="admin")
+            window.App.changePage(<Header/>);
+            else 
+            window.App.changePage(<DataViewDemo/>);
+            
+        }
+        
+        //  <DataViewDemo/>
          else
          alert("Incorrect UserId or Password");
 
