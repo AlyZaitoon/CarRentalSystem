@@ -24,13 +24,32 @@ public class Car {
 
     @Column
 
-    private String status;
+    private String car_status;
 
     @Column
     private float rate;
 
     @Column
     private String color;
+
+    @Column
+    private String img;
+
+    public String getCar_status() {
+        return car_status;
+    }
+
+    public void setCar_status(String car_status) {
+        this.car_status = car_status;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 
     public Car() {
     }
@@ -70,11 +89,11 @@ public class Car {
     }
 
     public String getStatus() {
-        return status;
+        return car_status;
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.car_status = status;
     }
 
     public float getRate() {

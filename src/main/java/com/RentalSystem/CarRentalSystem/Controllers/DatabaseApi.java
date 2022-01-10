@@ -18,6 +18,9 @@ import java.util.List;
 
 @CrossOrigin(value = "http://localhost:3000/")
 public class DatabaseApi {
+
+
+
     @Autowired
     private  UserQuery userQuery;
     @Autowired
@@ -32,7 +35,16 @@ public class DatabaseApi {
     @Autowired
     private  JdbcTemplate jdbc;
 
-
+    @GetMapping(value="/fullReport")
+    public List<Reservation> FullReport()
+    {
+        return reservationQuery.FullReport(jdbc);
+    }
+    @GetMapping(value="/getReservationsCar")
+    public List<Reservation> getReservationsCar()
+    {
+        return reservationQuery.CarReserve(jdbc);
+    }
 //*************************************************************************************************************************************
 
     @GetMapping(value="/getUsers")
@@ -64,19 +76,24 @@ public class DatabaseApi {
     public String addUser (@RequestBody User user)
     {
         String ret=this.userQuery.addUser(user,jdbc);
+
         return ret;
 
     }
     @PostMapping(value = "/updateUser")
     public String  updateUser (@RequestBody User user )
     {
-       return this.userQuery.updateUser(user,jdbc);
+       String ret= this.userQuery.updateUser(user,jdbc);
+
+        return ret;
     }
 
     @PostMapping(value = "/deleteUser")
     public String  deleteUser (@RequestBody User user )
     {
-      return   this.userQuery.deleterUser(user.getUser_id(),jdbc);
+        String ret =  this.userQuery.deleterUser(user.getUser_id(),jdbc);
+
+      return  ret;
     }
 
 //*******************************************************************************************************************************************
@@ -87,6 +104,7 @@ public class DatabaseApi {
     {
         String ret;
         ret=this.customerQuery.addCustomer(customer,jdbc);
+
         return ret;
     }
 
@@ -95,13 +113,17 @@ public class DatabaseApi {
     {
         String ret;
         ret=this.customerQuery.updateCustomer(customer,jdbc);
+
         return ret;
     }
 
     @PostMapping(value = "/deleteCustomer")
     public String deleteCustomer (@RequestBody Customer customer)
     {
-        return this.userQuery.deleterUser(customer.getCustomer_id(),jdbc);
+        String ret =this.userQuery.deleterUser(customer.getCustomer_id(),jdbc);
+
+        return ret;
+
     }
 
 
@@ -111,6 +133,7 @@ public String addAdmin (@RequestBody Admin admin)
 {
     String ret;
     ret=this.adminQuery.addAdmin(admin,jdbc);
+
     return ret;
 }
 
@@ -119,6 +142,7 @@ public String addAdmin (@RequestBody Admin admin)
     {
         String ret;
         ret=this.adminQuery.deleteAdmin(admin.getAdmin_id(),jdbc);
+
         return ret;
     }
 //*******************************************************************************************************************************************
@@ -127,6 +151,7 @@ public String addCar (@RequestBody Car car)
 {
     String ret;
     ret=this.carQuery.addCar(car,jdbc);
+
     return ret;
 }
 
@@ -135,34 +160,53 @@ public String addCar (@RequestBody Car car)
     {
         String ret;
         ret=this.carQuery.updateCar(car,jdbc);
+
         return ret;
     }
 
     @PostMapping(value = "/deleteCar")
     public String deleteCar (@RequestBody Car car)
     {
-        return this.carQuery.deleterCar(car.getPlate_id(),jdbc);
-    }
+        String ret=this.carQuery.deleterCar(car.getPlate_id(),jdbc);
+
+        return ret;}
 //*******************************************************************************************************************************************
     @PostMapping(value = "/reserveCar")
     public String reserveCar(@RequestBody Reservation reservation) throws ParseException {
-        return this.reservationQuery.reserve(reservation,jdbc);
+        String ret =this.reservationQuery.reserve(reservation,jdbc);
+
+        return ret;
     }
     @PostMapping(value = "/pickupCar")
     public String pickUpCar(@RequestParam(value = "resNo") int reservation)  {
+    String ret = this.reservationQuery.pickupCar(reservation,jdbc);
 
-        return this.reservationQuery.pickupCar(reservation,jdbc);
+    return ret;
     }
     @PostMapping(value = "/returnCar")
     public String returnCar(@RequestParam(value = "resNo") int reservation)  {
-        System.out.println(reservation);
-        return this.reservationQuery.returnCar(reservation,jdbc);
+
+        String ret =this.reservationQuery.returnCar(reservation,jdbc);
+
+        return ret;
     }
     @PostMapping(value = "/payForCar")
     public String payForCar(@RequestParam(value = "resNo") int reservation)  {
-        return this.reservationQuery.payForCar(reservation,jdbc);
+        String ret= this.reservationQuery.payForCar(reservation,jdbc);
+
+        return ret;
     }
 
+    @GetMapping(value = "/reservationById")
+    public List<Reservation> getReservationById(@RequestParam(value = "user_Id") int user_id)
+    {
+        return  reservationQuery.selectReservationByUserId(user_id,jdbc);
+    }
+    @GetMapping(value = "/reservationByNo")
+    public Reservation getReservationByNo(@RequestParam(value = "resNo") int no)
+    {
+        return  reservationQuery.selectReservationByReservationNumber(no,jdbc);
+    }
 
 //    @GetMapping(value = "/cars")
 //    public List<Car> availableCar(@RequestBody Car car)

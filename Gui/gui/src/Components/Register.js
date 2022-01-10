@@ -61,10 +61,14 @@ class Register extends Component {
             alert("Invalid Date");
         }
 
-        if(Id=='')
+        if(isNaN(Id)||Id=='')
         {
-            flagId=0;
+
+            if(Id=='')
             alert("Empty User id field");
+            else 
+            alert("Wrong Entry");
+            flagId=0;
         }
         
         if(password=='')
@@ -96,8 +100,7 @@ class Register extends Component {
 
         if(flagId&&flagSex&&flagPassword&&flagPhone&&flagFname&&flagDate)
         {
-            console.log(this.User)
-            console.log(this.Customer)
+            //neeeed to call back end to check duplicate entry
             RegisterService.registerUser(this.User)
             RegisterService.registerCustomer(this.Customer)
             window.Interface.changeState()

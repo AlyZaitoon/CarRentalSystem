@@ -32,7 +32,10 @@ public class CarQuery {
 
     public  String addCar(Car car, JdbcTemplate jdbc)
     {
-        String sqlUser="insert into car VALUES ('"+ car.getPlate_id() + "','" + car.getType()+ "','" + car.getModel()+"','" + car.getColor()+"','"+car.getYear()+"','"+car.getStatus()+"','"+car.getRate()+ "')";
+        System.out.println(car.getImg());
+        String[] path=car.getImg().split("\\\\");
+        System.out.println(path[2]);
+        String sqlUser="insert into car VALUES ('"+ car.getPlate_id() + "','" + car.getType()+ "','" + car.getModel()+"','" + car.getColor()+"','"+car.getYear()+"','"+car.getRate()+"','"+car.getStatus()+"','./"+path[2]+"')";
         int result = jdbc.update(sqlUser);
         if(result>0)
             return "Inserted Succefully";
@@ -41,7 +44,7 @@ public class CarQuery {
 
     public  String updateCar(Car car,JdbcTemplate jdbc)
     {
-        String sql="update car set status = ?  where plate_id =?";
+        String sql="update car set car_status = ?  where plate_id =?";
         if(car.getStatus()!=null && car.getPlate_id()!=null) {
             int result =jdbc.update(sql, car.getStatus(), car.getPlate_id());
             if(result>0)

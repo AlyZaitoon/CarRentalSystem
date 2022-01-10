@@ -20,10 +20,10 @@ public class Reservation {
     private  String plate_id;
 
     @Id
-    private Date pickup_date;
+    private String pickup_date;
 
     @Column
-    private Date return_date;
+    private String return_date;
 
     @Column
     private String status;
@@ -61,19 +61,27 @@ public class Reservation {
         this.plate_id = plate_id;
     }
 
-    public Date getPickup_date() {
+    public int getReservation_number() {
+        return reservation_number;
+    }
+
+    public void setReservation_number(int reservation_number) {
+        this.reservation_number = reservation_number;
+    }
+
+    public String getPickup_date() {
         return pickup_date;
     }
 
-    public void setPickup_date(Date pickup_date) {
+    public void setPickup_date(String pickup_date) {
         this.pickup_date = pickup_date;
     }
 
-    public Date getReturn_date() {
+    public String getReturn_date() {
         return return_date;
     }
 
-    public void setReturn_date(Date return_date) {
+    public void setReturn_date(String return_date) {
         this.return_date = return_date;
     }
 

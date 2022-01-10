@@ -11,8 +11,9 @@ class RegisterService
     registerUser(user)
     {   
         
-        axios.post(REGUSERS_REST_API_URL,user);;
+        axios.post(REGUSERS_REST_API_URL,user);
     }
+    
     registerCustomer(customer)
     {
         axios.post(REGCUSTOMERS_REST_API_URL,customer);

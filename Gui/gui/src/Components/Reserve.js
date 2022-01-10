@@ -20,7 +20,7 @@ render(){
             filterType:event.target.value
         })
                   
-        console.log(this.state.filterType)
+        
 
         
     }
@@ -29,7 +29,7 @@ render(){
             filterRate:event.target.value
         })
                   
-        console.log(this.state.filterRate)
+        
         
     }
     const searchTextModel = (event) => {
@@ -37,7 +37,7 @@ render(){
             filterModel:event.target.value
         })
                   
-        console.log(this.state.filterModel)
+       
 
         
     }
@@ -46,7 +46,7 @@ render(){
             filterYear:event.target.value
         })
                   
-        console.log(this.state.filterYear)
+       
         
     }
     const searchTextColor = (event) => {
@@ -54,7 +54,7 @@ render(){
             filterColor:event.target.value
         })
                   
-        console.log(this.state.filterColor)
+        
         
     }
     const TypeColumn = ["type"];
