@@ -35,21 +35,21 @@ this.columns=this.columns = [{
   dataField:"model",
   text:"Model",
   sort:true,
-  editable: true, //no edit in this column at all
+  editable: false, //no edit in this column at all
   filter: textFilter(),
 },
 {
   dataField:"color",
   text:"Color",
   sort:true,
-  editable: true, //no edit in this column at all
+  editable: false, //no edit in this column at all
   filter: textFilter(),
 },
 {
   dataField:"year",
   text:"Year",
   sort:true,
-  editable: true, //no edit in this column at all
+  editable: false, //no edit in this column at all
   filter: dateFilter(),
 },
 {
@@ -77,7 +77,7 @@ this.columns=this.columns = [{
   dataField:"rate",
   text:"Rate per day",
   sort:true,
-  editable: true, //no edit in this column at all
+  editable: false, //no edit in this column at all
   filter: numberFilter(),
 },
 ];
