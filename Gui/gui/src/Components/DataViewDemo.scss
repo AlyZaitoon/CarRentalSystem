@@ -1,3 +1,6 @@
+@import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+
 .dataview-demo .p-dropdown {
     width: 14rem;
     font-weight: normal;
@@ -63,6 +66,7 @@
     margin: .5em;
     border: 1px solid var(--surface-border);
     padding: 2rem;
+    width: 50%;
 }
 
 .dataview-demo .product-grid-item .product-grid-item-top,
@@ -73,7 +77,7 @@
 }
 
 .dataview-demo .product-grid-item img {
-    width: 75%;
+    width: 50%;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     margin: 2rem 0;
 }
@@ -87,7 +91,7 @@
     font-weight: 600;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 400px) {
     .dataview-demo .product-list-item {
         flex-direction: column;
         align-items: center;

@@ -7,7 +7,10 @@ import Form from './Form';
 import Customer from './Customer';
 import Reservations from './Reservations';
 import Cars from './Cars';
-
+import ReservationsCar from "./CarReserveReport";
+import FullReport from "./FullReport";
+import SimpleReport from "./SimpleReport";
+import { Button } from 'primereact/button';
 
 class Header extends Component {
     constructor() {
@@ -20,28 +23,39 @@ class Header extends Component {
         return (
             
             <nav className="navbar navbar-expand-lg navbar-blue bg-dark">
-                <div className='container'>
-                    <a className="navbar-brand text-info">Admin</a>
+                <div className='container '>
+                    <a className="navbar-brand text-info ">Admin</a>
                     <button className="navbar-toggler border border-info text-info" onClick={() => { this.setState({ show: !this.state.show }) }}>
                         {this.state.show ? <MenuIcon /> : <CloseIcon />}
                     </button>
                     <div className={this.state.show ? "collapse navbar-collapse" : "collapse navbar-collapse active"}>
                         <ul className="navbar-nav ms-auto">
+                        <li className="nav-item">
+                                <Button className="p-button-info" onClick={()=>{window.App.changePage(<ReservationsCar/>)}}>Cars and Reservations</Button>
+                            </li>
+                            <li className="nav-item">
+                                <Button className="p-button-info" onClick={()=>{window.App.changePage(<FullReport/>)}}>Full Report</Button>
+                            </li>
+                            <li className="nav-item">
+                                <Button className="p-button-info" onClick={()=>{window.App.changePage(<SimpleReport/>)}}>Simple Report</Button>
+                            </li>
+
                             <li className="nav-item ">
-                                <button className="nav-link text-dark" onClick={()=>{window.App.changePage(<Cars/>)}}>Cars Information</button>
+                                <Button className="p-button-info" onClick={()=>{window.App.changePage(<Cars/>)}}>Cars Information</Button>
                             </li>
                             <li className="nav-item">
-                                <button className="nav-link text-dark" onClick={()=>{window.App.changePage(<Reservations/>)}}>Reservations Data</button>
+                                <Button className="p-button-info" onClick={()=>{window.App.changePage(<Reservations/>)}}>Reservations Data</Button>
                             </li>
                             <li className="nav-item">
-                                <button className="nav-link text-dark" onClick={()=>{window.App.changePage(<Customer/>)}}>Customers Data</button>
+                                <Button className="p-button-info" onClick={()=>{window.App.changePage(<Customer/>)}}>Customers Data</Button>
                             </li>
                             <li className="nav-item">
-                                <button className="nav-link text-dark"onClick={()=>{window.App.changePage(<Form/>)}}>Add Car</button>
+                                <Button className="p-button-info"onClick={()=>{window.App.changePage(<Form/>)}}>Add Car</Button>
                             </li>
                             <li className="nav-item">
-                                <button className="nav-link text-dark" onClick={()=>{window.App.changePage(<Interface/>)}}>Log Out</button>
+                                <Button className="p-button-info" onClick={()=>{window.App.changePage(<Interface/>)}}>Log Out</Button>
                             </li>
+                       
                         </ul>
                     </div>
                 </div>

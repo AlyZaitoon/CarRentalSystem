@@ -1,81 +1,85 @@
-import { Component} from 'react';
+import axios from "axios";
+import {useState,useEffect, Component} from 'react';
 import BootstrapTable from "react-bootstrap-table-next";
-import cellEditFactory from "react-bootstrap-table2-editor";
-import filterFactory,{textFilter,numberFilter,dateFilter} from "react-bootstrap-table2-filter";
+import paginationFactory from "react-bootstrap-table2-paginator";
+import cellEditFactory,{Type} from "react-bootstrap-table2-editor";
+import filterFactory,{textFilter,numberFilter,customFilter,dateFilter,multiSelectFilter} from "react-bootstrap-table2-filter";
 import Header from "./Header";
 import ReservationsService from "../Services/ReservationsService";
-class Reservations extends Component {
+import { DataViewDemo } from "./Search";
+
+class Payment extends Component {
   constructor(props)
   {
     super(props);
     this.service= ReservationsService
+
     this.state={
       data:[]
     }
-    
-    this.columns = [
-      {
+    this.payFormatter=(data,row) =>{
+        console.log(row)
+        
+        return <>
+              <div >
+                  <button type="Submit" className="btn btn-primary " onClick={()=>this.PayForCar(row)}> Return and Pay</button>
+              </div>
+        </>
+      }
+    this.columns  = [{
         dataField:"reservation_number",
-        text:"Reservation no",
-        sort:true,
-        editable: true, //no edit in this column at all
-        filter: numberFilter(),
-      },
-      
-      {
-        dataField:"user_id", //key name
-        text:"User ID", //how u want to show it?
-        sort:true ,   //set sorting to true to sort it
-        filter:textFilter(),
+        text:"Reservation_no",
       },
       {
-        dataField:"plate_id", //key name
-        text:"Plate ID", //how u want to show it?
-        sort:true ,   //set sorting to true to sort it
-        filter:textFilter(),
+        dataField:"user_id",
+        text:"User ID",
       },
-      
-      
+      {
+        dataField:"plate_id",
+        text:"Plate ID",
+      },
       {
         dataField:"pickup_date",
         text:"Pickup date",
-        sort:true,
-        editable: true, //no edit in this column at all
-        filter: dateFilter(),
       },
       {
         dataField:"return_date",
         text:"Return date",
-        sort:true,
-        editable: true, //no edit in this column at all
-        filter: dateFilter(),
       },
       {
         dataField:"status",
         text:"Status",
-        sort:true,
-        filter: textFilter(),
-        validator:(newValue,row,column)=>{ //Validation
-          if(isNaN(newValue)){
-            return{
-              valid:false,
-              message:"Please enter numeric value",
-            };
-          }
-          return true;  
-        },
-    
       },
+    
       {
         dataField:"payment",
-        text:"Payment",
-        sort:true,
-        editable: true, //no edit in this column at all
-        filter: numberFilter(),
+        text: "Payment",
+      },
+      {
+        dataField:"pay",
+        text: "Pay",
+        formatter:this.payFormatter,
       },
       ]
   }
-  
+
+  componentDidMount(){
+    this.service.getReservationbyID(window.Login.id).then((response) => {
+        this.setState({ data: response})
+        // console.log(this.state.data)
+    });
+}
+  PayForCar(data){
+    this.service.payForCar(data.reservation_number).then((response) => {
+        
+    });
+    this.service.ReturnCar(data.reservation_number).then((response) => {
+        
+        // console.log(this.state.data)
+    });
+    this.componentDidMount()
+    // this.render()
+  }
   // useEffect(() =>{
   //   getData()
   // },[]);
@@ -90,12 +94,7 @@ class Reservations extends Component {
   //   //console.log(res.data)
   // };
 // *****************************************************
-  componentDidMount(){
-    this.service.getReservations().then((response) => {
-        this.setState({ data: response})
 
-    });
-}
 // ******************************************************
 
    selectRow={ //makes checkboxes to select selected Row
@@ -107,7 +106,6 @@ class Reservations extends Component {
 render(){
   return (
 <div>
-    <Header/>
     <div className="App">
       <BootstrapTable
       keyField ="id" 
@@ -116,8 +114,8 @@ render(){
       striped 
       hover 
       condensed 
-      cellEdit={cellEditFactory({
-        mode:"dbclick", //double click to edit selected
+   
+      cellEdit={cellEditFactory({ //double click to edit selected
         blurToSave: true, //the edited word is save even if u didnot press enter without it you should press enter to save it
         //nonEditableRows: ()=>[1,2,3], //no edit on first 3 rows
       })}
@@ -126,8 +124,10 @@ render(){
       filterPosition="bottom"
       />
     </div>
+    <button className="btn btn-primary"  onClick={() =>window.App.changePage(<DataViewDemo/>)}  > Go Back</button>
+
     </div>
   );
 }
 }
-export default Reservations;
+export default Payment;

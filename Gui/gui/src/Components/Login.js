@@ -10,10 +10,12 @@ class  Login extends Component
 {   
     constructor(props){
         super(props)
+        window.Login=this;
         this.state = {
             users:[],
             found:0
         }
+        this.id=0;
     }
     componentDidMount(){
         UserService.getUsers().then((response) => {
@@ -22,13 +24,16 @@ class  Login extends Component
     }
     getUsers(){
         var users=this.state.users;
-        var username=document.getElementById("username").value;
+        var userId=document.getElementById("userId").value;
+        if(isNaN(userId))
+        {
+            alert("Wrong Id");
+            return
+        }
         var password= document.getElementById("password").value;
-        console.log(username);
-        console.log( password);
         for (var i = 0; i < users.length; i++) {
 
-            if(username==users[i].user_id &&password==users[i].password)
+            if(userId==users[i].user_id &&password==users[i].password)
             {   
 
                 this.state.found=1;
@@ -36,12 +41,14 @@ class  Login extends Component
             }
            
         }
-        console.log(this.state.found);
         if(this.state.found==1)
         {   if(this.state.users[i].type=="admin")
             window.App.changePage(<Header/>);
             else 
-            window.App.changePage(<DataViewDemo/>);
+            {   this.id= userId
+                window.App.changePage(<DataViewDemo/>);
+            }
+           
             
         }
         
@@ -62,7 +69,7 @@ class  Login extends Component
                     <div className = "form">
                         <div className="form-group">
                             <label htmlFor = "username">User iD  </label>
-                            <input id="username" type = "numeric" name= "username" placeholder="username"/>
+                            <input id="userId" type = "numeric" name= "username" placeholder="username"/>
                         </div>
                         <div className="form-group">
                             <label htmlFor = "password">Password  </label>
